@@ -1,0 +1,90 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-validate:
+    name: Test & Syntax Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: ".github/scripts/requirements.txt"
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r .github/scripts/requirements.txt
+
+      - name: Validate YAML & JSON Syntax
+        run: |
+          python -c "
+          import json, yaml, sys
+          from pathlib import Path
+
+          root = Path('.')
+          errors = []
+
+          # Check YAML files
+          for yml in root.rglob('*.yml'):
+              if '.git' in yml.parts: continue
+              try:
+                  with open(yml, 'r', encoding='utf-8') as f:
+                      yaml.safe_load(f)
+              except Exception as e:
+                  errors.append(f'YAML Error in {yml}: {e}')
+
+          for yml in root.rglob('*.yaml'):
+              if '.git' in yml.parts: continue
+              try:
+                  with open(yml, 'r', encoding='utf-8') as f:
+                      yaml.safe_load(f)
+              except Exception as e:
+                  errors.append(f'YAML Error in {yml}: {e}')
+
+          # Check JSON files
+          for jf in root.rglob('*.json'):
+              if '.git' in jf.parts: continue
+              try:
+                  with open(jf, 'r', encoding='utf-8') as f:
+                      json.load(f)
+              except Exception as e:
+                  errors.append(f'JSON Error in {jf}: {e}')
+
+          if errors:
+              print('\n'.join(errors), file=sys.stderr)
+              sys.exit(1)
+          else:
+              print('All YAML and JSON files are syntactically valid!')
+          "
+
+      - name: Run Test Suite
+        run: |
+          pytest .github/scripts/tests/ -v
+
+      - name: Generate Job Summary
+        if: always()
+        run: |
+          echo "## 🚀 CI Pipeline Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Check | Result |" >> $GITHUB_STEP_SUMMARY
+          echo "| :--- | :---: |" >> $GITHUB_STEP_SUMMARY
+          echo "| YAML & JSON Syntax | ${{ steps.validate.outcome == 'failure' && '❌ Failed' || '✅ Passed' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Pytest Test Suite | ${{ job.status == 'success' && '✅ Passed' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✨ **CI status:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+

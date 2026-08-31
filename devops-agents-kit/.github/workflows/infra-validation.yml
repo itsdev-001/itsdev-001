@@ -1,0 +1,92 @@
+name: Infrastructure Validation
+
+on:
+  pull_request:
+    paths:
+      - "**/*.tf"
+      - "**/Dockerfile*"
+      - "**/*.dockerfile"
+      - "**/Containerfile*"
+      - "k8s/**"
+      - "kubernetes/**"
+      - "manifests/**"
+      - ".github/workflows/infra-validation.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-terraform:
+    name: Terraform Lint & Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.7.0"
+
+      - name: Check Terraform Formatting & Validation
+        run: |
+          shopt -s globstar nullglob
+          tf_files=(**/*.tf)
+          if [ ${#tf_files[@]} -eq 0 ]; then
+            echo "No Terraform files found. Skipping check."
+            exit 0
+          fi
+
+          echo "Found Terraform files: ${tf_files[*]}"
+          terraform fmt -check -diff
+
+          # Validate modules
+          for dir in $(find . -name "*.tf" -exec dirname {} \; | sort -u); do
+            echo "Validating Terraform directory: $dir"
+            (cd "$dir" && terraform init -backend=false && terraform validate)
+          done
+
+  validate-docker:
+    name: Dockerfile Lint (Hadolint)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Hadolint on Dockerfiles
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          recursive: true
+          failure-threshold: error
+          ignore: DL3008,DL3013
+        continue-on-error: true
+
+  validate-k8s:
+    name: Kubernetes Manifests (Kubeconform)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Kubeconform
+        run: |
+          curl -sL https://github.com/yannh/kubeconform/releases/latest/download/kubeconform-linux-amd64.tar.gz | tar -xz
+          sudo mv kubeconform /usr/local/bin/
+
+      - name: Validate Kubernetes Manifests
+        run: |
+          shopt -s globstar nullglob
+          manifest_dirs=("k8s" "kubernetes" "manifests")
+          found=0
+          for d in "${manifest_dirs[@]}"; do
+            if [ -d "$d" ]; then
+              echo "Validating manifests in $d/"
+              kubeconform -summary -strict -ignore-missing-schemas "$d/"
+              found=1
+            fi
+          done
+
+          if [ $found -eq 0 ]; then
+            echo "No standard Kubernetes manifest directories found. Skipping kubeconform."
+          fi
+
