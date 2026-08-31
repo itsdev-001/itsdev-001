@@ -1,2 +1,0 @@
-"""DevOps Automation Agents package."""
-
