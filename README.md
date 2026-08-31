@@ -1,9 +1,44 @@
-# DevOps Automation Kit
+<h1 align="center">Hi there, I'm Dev Singh 👋</h1>
+<h3 align="center">🚀 Aspiring DevOps & Cloud Engineer | Linux | Docker | Kubernetes | AWS | Terraform | CI/CD | Python</h3>
 
-[![CI](https://github.com/granth-alpha2/devops-agents-kit/actions/workflows/ci.yml/badge.svg)](.github/workflows/ci.yml)
-[![Infra Validation](https://github.com/granth-alpha2/devops-agents-kit/actions/workflows/infra-validation.yml/badge.svg)](.github/workflows/infra-validation.yml)
-[![Scheduled Health Check](https://github.com/granth-alpha2/devops-agents-kit/actions/workflows/scheduled-health-check.yml/badge.svg)](.github/workflows/scheduled-health-check.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3000&pause=1000&color=38BDF8&center=true&vCenter=true&width=600&lines=Building+Intelligent+DevOps+Systems;Automating+CI%2FCD+Pipelines;Managing+Cloud+Infrastructure+with+Terraform;Containerizing+Apps+with+Docker+%26+K8s;Securing+Cloud+Environments" alt="Typing SVG" />
+</p>
+
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=itsdev-001&label=Profile%20Views&color=0e75b6&style=flat-square" alt="Profile Views" />
+  <img src="https://img.shields.io/badge/Focus-DevOps%20%26%20Cloud%20Automation-success?style=flat-square" alt="Focus" />
+</p>
+
+---
+
+### 🛠️ Tech Stack & Skills
+
+<p align="center">
+  <!-- Cloud & IaC -->
+  <img src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-web-services&logoColor=white" />
+  <img src="https://img.shields.io/badge/Terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white" />
+  <!-- Containers & Orchestration -->
+  <img src="https://img.shields.io/badge/Docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" />
+  <img src="https://img.shields.io/badge/Kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white" />
+  <!-- CI/CD & Linux -->
+  <img src="https://img.shields.io/badge/GitHub_Actions-%232671E5.svg?style=for-the-badge&logo=github-actions&logoColor=white" />
+  <img src="https://img.shields.io/badge/Linux-%23FCC624.svg?style=for-the-badge&logo=linux&logoColor=black" />
+  <img src="https://img.shields.io/badge/Bash-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white" />
+  <!-- Languages -->
+  <img src="https://img.shields.io/badge/Python-%2314354C.svg?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white" />
+  <img src="https://img.shields.io/badge/Git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white" />
+</p>
+
+---
+
+# 🤖 DevOps Automation Kit
+
+[![CI](https://img.shields.io/badge/CI-Automated-blue?logo=githubactions)](.github/workflows/ci.yml)
+[![Infra Validation](https://img.shields.io/badge/Infra--Validation-Terraform%20|%20Docker%20|%20K8s-orange?logo=terraform)](.github/workflows/infra-validation.yml)
+[![Scheduled Health Check](https://img.shields.io/badge/Health--Check-Daily%20Audit-green?logo=github)](.github/workflows/scheduled-health-check.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Two intelligent automation agents and three GitHub Actions workflows that keep this repository's health, CI, and infrastructure configuration honest — with a hard rule against fake activity: **nothing ever gets committed or opened unless it reflects a real, actionable finding.**
 
@@ -82,8 +117,12 @@ Matched secret values are **never printed, written to reports, or transmitted to
 
 ## 🚀 Setup & Installation
 
-1. Copy `.github/` (scripts, lib, and workflows) into your repository.
-2. In your repository settings, ensure `GITHUB_TOKEN` has read/write permissions for workflows that create issues (Settings → Actions → General → Workflow permissions → **Read and write permissions**).
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/itsdev-001/itsdev-001.git
+   cd itsdev-001
+   ```
+2. In your repository settings on GitHub, ensure `GITHUB_TOKEN` has read/write permissions for workflows that create issues (Settings → Actions → General → Workflow permissions → **Read and write permissions**).
 3. Install script dependencies locally:
    ```bash
    pip install -r .github/scripts/requirements.txt
@@ -112,10 +151,18 @@ python .github/scripts/agents/repo_health_agent.py
 python .github/scripts/agents/security_dependency_agent.py
 ```
 
-### GitHub Actions Automation
-Once pushed to GitHub, the workflows will run automatically:
-- On every pull request to validate code and infrastructure syntax.
-- On a scheduled daily cadence to audit repository health and security posture.
+---
+
+### 📊 GitHub Statistics
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=itsdev-001&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" width="48%" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=itsdev-001&layout=compact&theme=tokyonight&hide_border=true" width="48%" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=itsdev-001&theme=tokyonight&hide_border=true" width="97%" />
+</p>
 
 ---
 
