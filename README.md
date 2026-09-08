@@ -50,11 +50,15 @@
 ### 🎛️ Developer Proficiency Matrix
 
 ```text
-☁️ Cloud & Infrastructure        ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░  85% [PROFICIENT]
-🐳 Containers & Orchestration    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░  85% [PROFICIENT]
-🔁 CI/CD & Automation            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░  85% [PROFICIENT]
-🐧 Linux / Shell Scripting       ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░  85% [PROFICIENT]
-🚀 Continuous Learning Pipeline  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 100% [ACTIVE]
+ Skill                             Progress              %     Level
+ ──────────────────────────────────────────────────────────────────────
+ ⚙️  DevOps & Automation           ████████████████░░░░  80%  [ADVANCED]
+ ☁️  AWS / Cloud                   ███████████████░░░░░  75%  [PROFICIENT]
+ 🐳 Docker & Containers            ██████████████░░░░░░  70%  [PROFICIENT]
+ ☸️  Kubernetes                    █████████████░░░░░░░  65%  [DEVELOPING]
+ 🏗️  Terraform / IaC               ████████████░░░░░░░░  60%  [INTERMEDIATE]
+ 🐧 Linux / Bash                   ███████████░░░░░░░░░  55%  [LEARNING]
+ 🔄 GitHub Actions / CI-CD         ██████████░░░░░░░░░░  50%  [EXPLORING]
 ```
 
 ---
@@ -88,16 +92,28 @@
 
 ---
 
-### 🔥 GitHub Performance & Live Contribution Matrix
+### 🐍 GitHub Performance & Live Snake Contribution Graph
 
+A **green open-mouthed snake** with forked tongue slithers across my real
+contribution grid — every tile I committed on gets **struck**, flashes
+neon-green → orange → red, then settles back to healthy green.
+Auto-regenerated nightly at **3 AM IST** (no token needed).
+
+<!-- ── Single snake SVG — one graph, no duplicates ── -->
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/snake-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/snake.svg">
-    <img alt="Contribution Snake Matrix" src="assets/snake-dark.svg" width="100%">
-  </picture>
+  <img alt="Snake Contribution Graph" src="assets/snake-dark.svg" width="100%"/>
 </p>
 
+<!-- ── Activity graph — the glowing green progress bar ── -->
+<p align="center">
+  <img
+    src="https://github-readme-activity-graph.vercel.app/graph?username=itsdev-001&bg_color=0d1117&color=3ddc6a&line=3ddc6a&point=adffd4&area=true&area_color=1a6b33&hide_border=true&radius=8&custom_title=Contribution%20Activity"
+    width="100%"
+    alt="Contribution Activity Graph"
+  />
+</p>
+
+<!-- ── Streak stats ── -->
 <p align="center">
   <img src="https://streak-stats.demolab.com/?user=itsdev-001&theme=tokyonight&hide_border=true&background=05010F&ring=00F5FF&fire=FF00E5&currStreakLabel=00F5FF&sideLabels=94A3B8&dates=94A3B8&currStreakNum=00F5FF" width="85%"/>
 </p>
